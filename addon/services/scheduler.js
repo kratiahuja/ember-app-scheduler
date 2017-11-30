@@ -68,6 +68,11 @@ const Scheduler = Service.extend({
   },
 
   flushQueue(queueName) {
+    if (!this.queues) {
+      // don't do any work if this.queues is null
+      return;
+    }
+
     const queue = this.queues[queueName];
     queue.isActive = false;
 
